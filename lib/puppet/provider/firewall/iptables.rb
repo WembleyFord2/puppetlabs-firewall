@@ -691,6 +691,8 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     end
 
     resource_list.each do |res|
+      Puppet.noptice("Hello World")
+      Puppet.notice(res)
       resource_value = nil
       if (resource[res]) then
         resource_value = resource[res]
