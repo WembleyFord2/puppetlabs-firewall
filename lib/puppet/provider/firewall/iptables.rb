@@ -3,7 +3,7 @@ require 'digest/md5'
 
 Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Firewall do
   include Puppet::Util::Firewall
-
+  include Puppet::Util::Logging
   @doc = "Iptables type provider"
 
   has_feature :iptables
@@ -691,7 +691,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     end
 
     resource_list.each do |res|
-      Puppet.noptice("Hello World")
+      Puppet.notice("Hello World")
       Puppet.notice(res)
       resource_value = nil
       if (resource[res]) then
