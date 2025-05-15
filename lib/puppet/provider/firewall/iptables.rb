@@ -707,6 +707,9 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
       elsif res == :jump and resource[:action] then
         # In this case, we are substituting jump for action
         resource_value = resource[:action].to_s.upcase
+        Puppet.notice(res)
+        Puppet.notice(resource[:action])
+        Puppet.notice(resource_value)
       else
         next
       end
