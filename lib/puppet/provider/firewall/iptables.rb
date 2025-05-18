@@ -647,7 +647,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
       hash[:action] = hash[:jump].downcase
       hash.delete(:jump)
       #Puppet.info(hash[:action].to_yaml)
-      Puppet.info(hash.to_yaml)
+      #Puppet.info(hash.to_yaml)
     end
     hash
   end
