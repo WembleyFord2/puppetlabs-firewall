@@ -702,7 +702,9 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
       resource_value = nil
       if (resource[res]) then
         Puppet.info("L704")
+        Puppet.info("Resource[res]")
         Puppet.info(resource[res].to_yaml)
+        Puppet.info("res")
         Puppet.info(res.to_yaml)
         resource_value = resource[res]
         # If socket is true then do not add the value as -m socket is standalone
