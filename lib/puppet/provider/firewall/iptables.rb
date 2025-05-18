@@ -273,8 +273,8 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
         @property_hash[property.to_sym]
       end
     end
-    Puppet.info(property.to_yaml)
-    Puppet.info(:chain.to_yaml)
+#    Puppet.info(property.to_yaml)
+#    Puppet.info(:chain.to_yaml)
     if property == :chain
       define_method "#{property}=" do |value|
         if @property_hash[:chain] != value
@@ -641,13 +641,15 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
 
     # If the jump parameter is set to one of: ACCEPT, REJECT or DROP then
     # we should set the action parameter instead.
+
+    # This appears to be the output of iptables
     if ['ACCEPT','REJECT','DROP'].include?(hash[:jump]) then
-      Puppet.info("Line 645")
-      Puppet.info(hash.to_yaml)
+#      Puppet.info("Line 645")
+#      Puppet.info(hash.to_yaml)
       hash[:action] = hash[:jump].downcase
       hash.delete(:jump)
-      Puppet.info(hash[:action].to_yaml)
-      Puppet.info(hash.to_yaml)
+#      Puppet.info(hash[:action].to_yaml)
+#      Puppet.info(hash.to_yaml)
     end
     hash
   end
@@ -711,8 +713,11 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
           end
         end
       elsif res == :jump and resource[:action] then
+        Puppet.info("----------iptables 716----------")
+        Puppet.info(res.to_yaml)
         # In this case, we are substituting jump for action
         resource_value = resource[:action].to_s.upcase
+        Puppet.info("----------iptables 716----------")
       else
         next
       end
