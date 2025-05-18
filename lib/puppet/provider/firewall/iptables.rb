@@ -725,6 +725,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
       elsif res == :jump and resource[:action] then
         Puppet.info("----------iptables 716----------")
         Puppet.info("Resource[res]")
+        Puppet.info(resource[:name])
         Puppet.info(resource[res].to_yaml)
         Puppet.info("res")
         Puppet.info(res.to_yaml)
