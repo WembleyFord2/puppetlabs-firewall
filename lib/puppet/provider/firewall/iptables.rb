@@ -4,8 +4,7 @@ require 'yaml'
 
 Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Firewall do
   include Puppet::Util::Firewall
-  include Puppet::Util::Logging
-  include 
+  include Puppet::Util::Logging 
   @doc = "Iptables type provider"
 
   has_feature :iptables
