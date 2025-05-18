@@ -719,7 +719,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
             next
           end
         end
-      elsif res == :jump and resource[:action]=='ACCEPT'
+      elsif res == :jump and resource[:action]=='ACCEPT' then
         resource_value = resource[:action].to_s.upcase
       elsif res == :jump and resource[:action] then
         Puppet.info("----------iptables 716----------")
