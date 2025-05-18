@@ -681,6 +681,8 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
 
     args = []
     resource_list = self.class.instance_variable_get('@resource_list')
+    Puppet.info("resource_list = self.class.instance_variable_get(@resource_list)")
+    Puppet.info(resource_list.toyaml)
     known_booleans = self.class.instance_variable_get('@known_booleans')
     resource_map = self.class.instance_variable_get('@resource_map')
     resource_map = munge_resource_map_from_resource(resource_map, resource)
