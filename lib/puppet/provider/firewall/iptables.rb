@@ -683,14 +683,14 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     args = []
     resource_list = self.class.instance_variable_get('@resource_list')
     Puppet.info("resource_list = self.class.instance_variable_get(@resource_list)")
-    Puppet.info(resource_list.to_yaml)
+  #  Puppet.info(resource_list.to_yaml)
     known_booleans = self.class.instance_variable_get('@known_booleans')
     resource_map = self.class.instance_variable_get('@resource_map')
      Puppet.info("pre mung resource map")
-    Puppet.info(resource_map.to_yaml)
+ #   Puppet.info(resource_map.to_yaml)
     resource_map = munge_resource_map_from_resource(resource_map, resource)
     Puppet.info("post mung res map")
-    Puppet.info(resource_map.to_yaml)
+#    Puppet.info(resource_map.to_yaml)
     # Always attempt to wait for a lock for iptables to prevent failures when
     # puppet is running at the same time something else is managing the rules
     # note: --wait wasn't added untip iptables version 1.4.20
