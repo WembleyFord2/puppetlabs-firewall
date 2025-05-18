@@ -643,14 +643,16 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     # we should set the action parameter instead.
 
     # This appears to be the output of iptables
+    # turns jumps to ACCEPT, REJECT and DROP 
+    # to action => accept etc. 
     if ['ACCEPT','REJECT','DROP'].include?(hash[:jump]) then
-      Puppet.info("Line 645")
-      Puppet.info(hash.to_yaml)
-      Puppet.info(hash[:action].to_yaml)
+      #Puppet.info("Line 645")
+      #Puppet.info(hash.to_yaml)
+      #Puppet.info(hash[:action].to_yaml)
       hash[:action] = hash[:jump].downcase
       hash.delete(:jump)
-      Puppet.info(hash[:action].to_yaml)
-      Puppet.info(hash.to_yaml)
+      #Puppet.info(hash[:action].to_yaml)
+      #Puppet.info(hash.to_yaml)
     end
     hash
   end
