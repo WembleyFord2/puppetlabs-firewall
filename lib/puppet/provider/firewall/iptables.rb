@@ -725,6 +725,8 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
         Puppet.info(res.to_yaml)
         # In this case, we are substituting jump for action
         resource_value = resource[:action].to_s.upcase
+        Puppet.info("resource_value")
+        Puppet.inf("resource_value")
         Puppet.info("----------iptables 716----------")
       else
         next
