@@ -1,9 +1,11 @@
 require 'puppet/provider/firewall'
 require 'digest/md5'
+require 'yaml'
 
 Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Firewall do
   include Puppet::Util::Firewall
   include Puppet::Util::Logging
+  include 
   @doc = "Iptables type provider"
 
   has_feature :iptables
@@ -272,8 +274,8 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
         @property_hash[property.to_sym]
       end
     end
-    Puppet.info(property)
-    Puppet.info(:chain)
+    Puppet.info(property.to_yaml)
+    Puppet.info(:chain.to_yaml)
     if property == :chain
       define_method "#{property}=" do |value|
         if @property_hash[:chain] != value
@@ -641,8 +643,10 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     # If the jump parameter is set to one of: ACCEPT, REJECT or DROP then
     # we should set the action parameter instead.
     if ['ACCEPT','REJECT','DROP'].include?(hash[:jump]) then
+      Puppet.info(hash[:jump].to_yaml)
       hash[:action] = hash[:jump].downcase
       hash.delete(:jump)
+      Puppet.info(hash[:action].to_yaml)
     end
     hash
   end
